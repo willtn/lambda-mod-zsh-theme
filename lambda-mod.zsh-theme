@@ -28,21 +28,15 @@ function get_right_prompt() {
     fi
 }
 
-function ssh_connection() {
-  if [[ -n $SSH_CONNECTION ]]; then
-    echo "%{$fg_bold[magenta]%}(ssh) "
-  fi
-}
-
 function ssh_hostname() {
   if [[ -n $SSH_CONNECTION ]]; then
-    echo "@%m"
+    echo "%{$fg_bold[magenta]%}(%m)"
   fi
 }
 
 PROMPT=$'\n'$LAMBDA'\
- $(ssh_connection)\
- %{$fg_bold[$USERCOLOR]%}%n$(ssh_hostname)\
+ $(ssh_hostname)\
+ %{$fg_bold[$USERCOLOR]%}%n\
  %{$fg_no_bold[magenta]%}[%'${LAMBDA_MOD_N_DIR_LEVELS:-3}'~]\
  $(check_git_prompt_info)\
 %{$reset_color%}'
