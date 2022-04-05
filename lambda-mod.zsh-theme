@@ -30,7 +30,7 @@ function get_right_prompt() {
 
 function ssh_hostname() {
   if [[ -n $SSH_CONNECTION ]]; then
-    echo "%{$fg_bold[magenta]%}(%m)%{$reset_color%}"
+    echo "%{$fg_bold[magenta]%}(%m)%{$reset_color%} "
   fi
 }
 
