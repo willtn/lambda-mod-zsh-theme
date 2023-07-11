@@ -37,9 +37,10 @@ function ssh_hostname() {
 PROMPT=$'\n'$LAMBDA'\
  $(ssh_hostname)%{$fg_bold[$USERCOLOR]%}%n\
  %{$fg_no_bold[magenta]%}[%'${LAMBDA_MOD_N_DIR_LEVELS:-3}'~]\
- %{$reset_color%}'
+ $(check_git_prompt_info)\
+%{$reset_color%}'
 
-RPROMPT='%{$reset_color%}'
+RPROMPT='$(get_right_prompt)'
 
 # Format for git_prompt_info()
 ZSH_THEME_GIT_PROMPT_PREFIX="at %{$fg[blue]%} "
